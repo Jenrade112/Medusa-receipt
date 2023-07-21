@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./index.css"/>
+    <title>Generate Receipt</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+
+<body>
+    <div class="left">
+        <h1 class="title">Generate Receipt</h1>
+        <input type="file" id="myFileInput" accept=".xls,.xlsx">
+        <div>
+            <button id="convertBtn">Convert</button>
+            <button id="generateBtn">Generate</button>
+        </div>
+        
+    </div>
+    <div class="right">
+        <pre id="jsondata"></pre>
+    </div>
+
+    <div>
+
+        <h2 className="sub-heading">Transaction Details</h2>
+        <table>
+
+            <tbody>
+
+                <hr />
+
+                <tr>
+
+                    <td valign="middle" width="65%"><h4 className="section">PAN</h4></td>
+
+                    <td valign="middle" width="35%"><p className="detail">{pan}</p></td>
+
+                </tr>
+
+                <tr>
+
+                    <td valign="middle" width="65%"><h4 className="section">STAN</h4></td>
+
+                    <td valign="middle" width="35%"><p className="detail">{stan}</p></td>
+
+                </tr>
+
+                <tr>
+
+                    <td valign="middle" width="50%" ><h4 className="section">RRN</h4></td>
+
+                    <td valign="middle" width="35%"><p className="detail">{rrn}</p></td>
+
+                </tr>
+
+                <tr>
+
+                    <td valign="middle" width="50%" ><h4 className="section">Terminal ID</h4></td>
+
+                    <td valign="middle" width="35%"><p className="detail">{terminalID}</p></td>
+
+                </tr>
+
+                <tr>
+
+                    <td valign="middle" width="50%" ><h4 className="section">Reponse Description</h4></td>
+
+                    <td valign="middle" width="35%"><p className="detail">{responseDesc}</p></td>
+
+                </tr>
+
+                <tr>
+
+                    <td valign="middle" width="50%" ><h4 className="section">Amount</h4></td>
+
+                    <td valign="middle" width="35%"><p className="detail">{amount}</p></td>
+
+                </tr>
+
+                <tr>
+
+                    <td valign="middle" width="50%" ><h4 className="section">Status</h4></td>
+
+                    <td valign="middle" width="35%"><p className="detail">{status}</p></td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</div>
+
+<span >&copy; 3Line Card Management Ltd</span>
+
+</div>
+
+    <script src="excel.js"></script>
+</body>
+
+</html>
