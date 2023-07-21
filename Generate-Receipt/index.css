@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Frijole&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Space Grotesk';
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.right {
+    width: 100%;
+    background: rgb(242, 238, 238);
+    padding: 4em;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.title {
+    margin-bottom: 4em;
+}
+
+#myFileInput {
+  /* Custom styles */
+  /* padding: 10px; */
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: #333;
+  /* Additional styles to improve visibility and interaction */
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 4em;
+}
+
+#myFileInput::file-selector-button {
+  /* Styling the button part of the file input */
+  padding: 8px 12px;
+  background-color: #5C35A8;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#myFileInput::file-selector-button:hover {
+  /* Hover state for the button part of the file input */
+  background-color: #23527c;
+}
+
+button {
+    padding: 1em 1.5em;
+    outline: none;
+    border-radius: 3em;
+    border: none;
+    color: #240A7F;
+}
+
+#generateBtn {
+    background: #240A7F;
+    color: #fff
+}

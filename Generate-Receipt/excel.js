@@ -1,6 +1,6 @@
 let selectedFile;
 console.log(window.XLSX);
-document.getElementById('input').addEventListener("change", (event) => {
+document.getElementById('myFileInput').addEventListener("change", (event) => {
     selectedFile = event.target.files[0];
 });
 
@@ -17,30 +17,49 @@ let data = [{
     }];
 
     document.getElementById('convertBtn').addEventListener("click", () => {
+        console.log('clicked')
         XLSX.utils.json_to_sheet(data, 'out.xlsx');
         if (selectedFile) {
+            console.log('clicked', selectedFile)
             let fileReader = new FileReader();
             fileReader.readAsBinaryString(selectedFile);
             fileReader.onload = (event) => {
                 let data = event.target.result;
+                console.log('test: ', data)
                 let workbook = XLSX.read(data, { type: "binary" });
-                console.log(workbook);
+                console.log('WB: ', workbook);
                 workbook.SheetNames.forEach(sheet => {
+                    console.log('Sheet: ', sheet)
                     let rowObject = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
-                    console.log(rowObject);
-                    document.getElementById("jsondata").innerHTML = JSON.stringify(rowObject, undefined, 4);
+                    console.log('data: ', rowObject, ...rowObject);
+                    document.getElementById("jsondata").innerHTML = JSON.stringify(rowObject, undefined, 100);
+                    console.log(document.getElementById("jsondata"))
+                    document.getElementById('generateBtn').addEventListener("click", () => {
+                        const data = document.getElementById('jsondata')
+                        
+                        // for(let i = 0; i < rowObject.length; i++ ) {
+                            html2canvas(document.getElementById('jsondata')).then(function (canvas) {
+                                var imageData = canvas.toDataURL("image/png");
+                                var downloadLink = document.createElement("a");
+                                downloadLink.href = imageData;
+                                downloadLink.download = "Receipt";
+                                downloadLink.click();
+                            });
+                        // }
+                    }); 
                 });
             };
         }
     });
     
-document.getElementById('generateBtn').addEventListener("click", () => {
-    
-    html2canvas(document.body).then(function (canvas) {
-        var imageData = canvas.toDataURL("image/png");
-        var downloadLink = document.createElement("a");
-        downloadLink.href = imageData;
-        downloadLink.download = "Receipt";
-        downloadLink.click();
-    });
-});          
+// document.getElementById('generateBtn').addEventListener("click", () => {
+//     const data = document.getElementById('jsondata')
+
+//     html2canvas(data).then(function (canvas) {
+//         var imageData = canvas.toDataURL("image/png");
+//         var downloadLink = document.createElement("a");
+//         downloadLink.href = imageData;
+//         downloadLink.download = "Receipt";
+//         downloadLink.click();
+//     });
+// });          
